@@ -1,0 +1,81 @@
+/* Related Items Styles - Black & White Theme */
+.related-items {
+    background: #0a0a0a;
+    border-radius: 0;
+    border: 1px solid #222;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.related-items h3 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.related-items .card {
+    border: 1px solid #222;
+    border-radius: 0;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    background: #0a0a0a;
+}
+
+.related-items .card:hover {
+    border-color: #fff;
+}
+
+.related-items .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.related-items .card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.related-items .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.related-items .card-text {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.related-items .h5 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.related-items .btn-outline-primary {
+    border-color: #fff;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.related-items .btn-outline-primary:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.related-items .card-body {
+    background: #0a0a0a;
+}
+
+@media (max-width: 768px) {
+    .related-items {
+        padding: 20px;
+        margin-top: 30px;
+    }
+    
+    .related-items .card {
+        margin-bottom: 20px;
+    }
+}

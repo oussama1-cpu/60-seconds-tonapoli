@@ -1,0 +1,348 @@
+/* Order Tracking Styles - Black & White Theme */
+
+.tracking-container {
+    background: #0a0a0a;
+    border-radius: 0;
+    border: 1px solid #222;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+/* Order Header */
+.order-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid #444;
+}
+
+.status-confirmed {
+    background: #111;
+    color: #fff;
+    border-color: #fff;
+}
+
+.status-preparing {
+    background: #111;
+    color: #888;
+    border-color: #888;
+}
+
+.status-on-the-way {
+    background: #111;
+    color: #fff;
+    border-color: #fff;
+}
+
+.status-delivered {
+    background: #fff;
+    color: #000;
+}
+
+.estimated-time {
+    display: flex;
+    align-items: center;
+    color: #888;
+    font-size: 0.875rem;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.tracker-line {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #333;
+    border-radius: 0;
+}
+
+.tracker-progress {
+    height: 100%;
+    background: #fff;
+    border-radius: 0;
+    transition: width 0.5s ease;
+}
+
+.tracker-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.tracker-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 0;
+    background: #111;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    color: #888;
+}
+
+.tracker-step.completed .step-icon {
+    background: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.tracker-step.active .step-icon {
+    background: #111;
+    border-color: #fff;
+    color: #fff;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.step-name {
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #fff;
+}
+
+.step-time {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Map Section */
+.map-section {
+    margin-bottom: 40px;
+}
+
+.map-container {
+    height: 300px;
+    border-radius: 0;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid #222;
+}
+
+.map-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+
+/* Order Details */
+.order-details {
+    margin-bottom: 40px;
+}
+
+.order-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #222;
+    color: #fff;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-summary {
+    background: #111;
+    padding: 20px;
+    border-radius: 0;
+    border: 1px solid #222;
+    color: #fff;
+}
+
+/* Contact Support */
+.contact-support {
+    background: #111;
+    padding: 20px;
+    border-radius: 0;
+    border: 1px solid #222;
+}
+
+.support-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 0;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+    color: #fff;
+}
+
+.support-option:hover {
+    border-color: #fff;
+}
+
+/* Sidebar */
+.tracking-sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-section {
+    background: #0a0a0a;
+    border-radius: 0;
+    border: 1px solid #222;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.sidebar-section h5 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Delivery Info */
+.delivery-info .info-item {
+    margin-bottom: 15px;
+}
+
+.delivery-info .info-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 20px;
+    bottom: -15px;
+    width: 2px;
+    background: #333;
+}
+
+.timeline-item:last-child::before {
+    display: none;
+}
+
+.timeline-time {
+    min-width: 80px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.timeline-event {
+    margin-left: 20px;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tracking-container {
+        padding: 20px;
+    }
+    
+    .tracker-steps {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .tracker-line {
+        display: none;
+    }
+    
+    .tracker-step {
+        flex-direction: row;
+        text-align: left;
+        justify-content: flex-start;
+    }
+    
+    .step-icon {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .tracking-sidebar {
+        margin-top: 20px;
+        position: static;
+    }
+    
+    .support-option {
+        margin-bottom: 10px;
+    }
+}
+
+/* Loading Animation */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #333;
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Animation */
+.success-checkmark {
+    color: #fff;
+    animation: checkmarkPop 0.5s ease;
+}
+
+@keyframes checkmarkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Map Animation */
+.map-container.loading {
+    background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
+    background-size: 200% 100%;
+    animation: mapLoading 1.5s infinite;
+}
+
+@keyframes mapLoading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

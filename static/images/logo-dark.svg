@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <defs>
+    <linearGradient id="pizzaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E63946;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Pizza slice icon -->
+  <g transform="translate(5, 5)">
+    <path d="M25 0 L50 43.3 L0 43.3 Z" fill="url(#pizzaGrad)" />
+    <circle cx="20" cy="20" r="4" fill="#FFE66D" />
+    <circle cx="30" cy="25" r="3" fill="#FFE66D" />
+    <circle cx="25" cy="35" r="3.5" fill="#FFE66D" />
+    <circle cx="15" cy="30" r="3" fill="#FFE66D" />
+  </g>
+  
+  <!-- Text: 60 Seconds -->
+  <text x="60" y="22" font-family="'Poppins', Arial, sans-serif" font-size="14" font-weight="700" fill="#1a1a1a">
+    60 SECONDS
+  </text>
+  
+  <!-- Text: to Napoli -->
+  <text x="60" y="42" font-family="'Playfair Display', Georgia, serif" font-size="18" font-weight="600" fill="#FF6B35">
+    to Napoli
+  </text>
+  
+  <!-- Decorative underline -->
+  <line x1="60" y1="48" x2="160" y2="48" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/>
+</svg>

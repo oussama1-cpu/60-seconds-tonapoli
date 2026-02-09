@@ -1,0 +1,313 @@
+/* Enhanced Menu Page Styles - Black & White Theme */
+
+/* Search and Filter Section */
+.menu-hero {
+    background: #000;
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #222;
+}
+
+.menu-hero h1 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Filter Controls */
+.input-group-text {
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+#search-input {
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+#search-input::placeholder {
+    color: #666;
+}
+
+#search-input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
+    background: #111;
+    color: #fff;
+}
+
+.btn-check:checked + .btn-outline-success {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.btn-check:checked + .btn-outline-warning {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.btn-outline-success, .btn-outline-warning {
+    border-color: #444;
+    color: #888;
+}
+
+.btn-outline-success:hover, .btn-outline-warning:hover {
+    background-color: #222;
+    border-color: #fff;
+    color: #fff;
+}
+
+/* Category Navigation */
+.menu-category-nav {
+    position: sticky;
+    top: 20px;
+}
+
+.category-nav-link {
+    color: #888;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 0;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.category-nav-link:hover {
+    background: #111;
+    color: #fff;
+    border-left-color: #fff;
+}
+
+.category-nav-link.active {
+    background: #111;
+    color: #fff;
+    border-left-color: #fff;
+}
+
+/* Menu Item Cards */
+.menu-item-card {
+    border: 1px solid #222;
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: none;
+    background: #0a0a0a;
+}
+
+.menu-item-card:hover {
+    border-color: #fff;
+    box-shadow: none;
+}
+
+.menu-item-img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu-item-card:hover .menu-item-img {
+    transform: scale(1.05);
+}
+
+/* Quick View Button */
+.quick-view-btn {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-item-card:hover .quick-view-btn {
+    opacity: 1;
+}
+
+/* Dietary Badges */
+.position-absolute .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Rating Stars */
+.rating-stars {
+    color: #ffc107;
+}
+
+.rating-stars i {
+    margin-right: 2px;
+}
+
+/* Loading and No Results States */
+#loading-indicator, #no-results {
+    background: #0a0a0a;
+    border-radius: 0;
+    border: 1px solid #222;
+    color: #fff;
+}
+
+/* Filter Tags */
+#filter-tags .badge {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* Category Sections */
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-title {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.category-count {
+    font-size: 0.875rem;
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+    transition: all 0.3s ease;
+    background: transparent;
+    border-color: #444;
+    color: #888;
+}
+
+.wishlist-btn:hover {
+    color: #fff;
+    border-color: #fff;
+    transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+    color: #fff;
+    background-color: #222;
+    border-color: #fff;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    transition: all 0.3s ease;
+    background: #fff;
+    color: #000;
+    border: none;
+}
+
+.add-to-cart-btn:hover {
+    background: #888;
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-hero {
+        padding: 40px 0;
+    }
+    
+    .menu-category-nav {
+        position: static;
+        margin-bottom: 30px;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        margin-bottom: 5px;
+    }
+    
+    .menu-item-wrapper {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Hover Effects */
+.menu-item-wrapper {
+    transition: all 0.3s ease;
+}
+
+.menu-item-wrapper.hidden {
+    display: none;
+}
+
+.menu-item-wrapper.filtered {
+    display: block;
+}
+
+/* Stats Section */
+.menu-category-nav .border-top {
+    border-color: #333 !important;
+}
+
+/* Card styling */
+.card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 0;
+}
+
+.card-body {
+    background: #0a0a0a;
+}
+
+.form-select {
+    background-color: #111;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+.form-select:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
+}
+
+/* Quick Stats Animation */
+#total-items, #filtered-items {
+    transition: all 0.3s ease;
+}
+
+/* Filter Pills */
+.filter-pill {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #222;
+    color: #fff;
+    border-radius: 0;
+    font-size: 0.875rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #444;
+}
+
+.filter-pill .close {
+    margin-left: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,101 @@
+# Spanish translations for 60 Seconds to Napoli
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: es\n"
+
+msgid "Menu"
+msgstr "Menú"
+
+msgid "About"
+msgstr "Nosotros"
+
+msgid "Contact"
+msgstr "Contacto"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "My Account"
+msgstr "Mi Cuenta"
+
+msgid "My Orders"
+msgstr "Mis Pedidos"
+
+msgid "Logout"
+msgstr "Cerrar Sesión"
+
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+msgid "Register"
+msgstr "Registrarse"
+
+msgid "Award Winning Neapolitan Pizza"
+msgstr "Pizza Napolitana Galardonada"
+
+msgid "Original Neapolitan pizza with high-quality ingredients and a dough that rests for up to 72 hours and is baked at 485°C for just 60 seconds."
+msgstr "Pizza napolitana original con ingredientes de alta calidad y una masa que reposa hasta 72 horas y se hornea a 485°C en solo 60 segundos."
+
+msgid "View Menu"
+msgstr "Ver Menú"
+
+msgid "Make a Reservation"
+msgstr "Hacer una Reserva"
+
+msgid "485°C Wood Fire"
+msgstr "Horno de Leña 485°C"
+
+msgid "Our pizzas are cooked in a traditional wood-fired oven at 485°C for the perfect Neapolitan crust."
+msgstr "Nuestras pizzas se cocinan en un horno de leña tradicional a 485°C para la corteza napolitana perfecta."
+
+msgid "72h Dough"
+msgstr "Masa 72h"
+
+msgid "Our dough is made with Italian flour and left to rise for 72 hours for optimal flavor and texture."
+msgstr "Nuestra masa está hecha con harina italiana y se deja fermentar durante 72 horas para un sabor y textura óptimos."
+
+msgid "Premium Ingredients"
+msgstr "Ingredientes Premium"
+
+msgid "We use only the finest imported Italian ingredients, including San Marzano tomatoes and fresh mozzarella di bufala."
+msgstr "Utilizamos solo los mejores ingredientes italianos importados, incluyendo tomates San Marzano y mozzarella di bufala fresca."
+
+msgid "Our Specialties"
+msgstr "Nuestras Especialidades"
+
+msgid "Discover our authentic Neapolitan pizzas"
+msgstr "Descubre nuestras auténticas pizzas napolitanas"
+
+msgid "View Details"
+msgstr "Ver Detalles"
+
+msgid "View Full Menu"
+msgstr "Ver Menú Completo"
+
+msgid "Find Us"
+msgstr "Encuéntranos"
+
+msgid "Visit us at one of our locations"
+msgstr "Visítanos en una de nuestras ubicaciones"
+
+msgid "What Our Customers Say"
+msgstr "Lo Que Dicen Nuestros Clientes"
+
+msgid "Discover why our guests love us"
+msgstr "Descubre por qué nuestros clientes nos adoran"
+
+msgid "5 stars"
+msgstr "5 estrellas"
+
+msgid "4 stars"
+msgstr "4 estrellas"
+
+msgid "3 stars"
+msgstr "3 estrellas"
+
+msgid "2 stars"
+msgstr "2 estrellas"
+
+msgid "1 star"
+msgstr "1 estrella"

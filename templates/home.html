@@ -1,0 +1,466 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Video Background -->
+<section class="hero-section">
+    <div class="hero-video-container">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="{% static 'videos/pizza-hero.mp4' %}" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+        <h1 class="hero-title">{% trans "Award Winning Neapolitan Pizza" %}</h1>
+        <p class="hero-subtitle">{% trans "Original Neapolitan pizza with high-quality ingredients and a dough that rests for up to 72 hours and is baked at 485°C for just 60 seconds." %}</p>
+        <div class="mt-4">
+            <a href="{% url 'menu-list' %}" class="btn btn-primary btn-lg me-3">{% trans "View Menu" %}</a>
+            <a href="#reservation" class="btn btn-outline-light btn-lg">{% trans "Make a Reservation" %}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Pizza Video Showcase -->
+<section class="video-showcase">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="video-wrapper">
+                    <video autoplay muted loop playsinline class="showcase-video">
+                        <source src="{% static 'videos/pizza-making.mp4' %}" type="video/mp4">
+                    </video>
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="video-content">
+                    <h2 class="display-5 mb-4">{% trans "The Art of Neapolitan Pizza" %}</h2>
+                    <p class="lead mb-4">{% trans "Watch our master pizzaiolos craft the perfect pizza in just 60 seconds." %}</p>
+                    <ul class="video-features">
+                        <li><i class="fas fa-check-circle me-2"></i>{% trans "72-hour fermented dough" %}</li>
+                        <li><i class="fas fa-check-circle me-2"></i>{% trans "San Marzano tomatoes DOP" %}</li>
+                        <li><i class="fas fa-check-circle me-2"></i>{% trans "Fresh Fior di Latte" %}</li>
+                        <li><i class="fas fa-check-circle me-2"></i>{% trans "485°C wood-fired oven" %}</li>
+                        <li><i class="fas fa-check-circle me-2"></i>{% trans "Ready in 60 seconds" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 features-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>{% trans "485°C Wood Fire" %}</h3>
+                    <p>{% trans "Our pizzas are cooked in a traditional wood-fired oven at 485°C for the perfect Neapolitan crust." %}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wheat-awn"></i>
+                    </div>
+                    <h3>{% trans "72h Dough" %}</h3>
+                    <p>{% trans "Our dough is made with Italian flour and left to rise for 72 hours for optimal flavor and texture." %}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>{% trans "Premium Ingredients" %}</h3>
+                    <p>{% trans "We use only the finest imported Italian ingredients, including San Marzano tomatoes and fresh mozzarella di bufala." %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Preview -->
+<section class="menu-preview">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-4 mb-3">{% trans "Our Specialties" %}</h2>
+            <p class="lead">{% trans "Discover our authentic Neapolitan pizzas" %}</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for item in featured_items|slice:":3" %}
+            <div class="col-md-4">
+                <div class="card menu-item-card">
+                    <div class="position-relative">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="card-img-top menu-item-img" alt="{{ item.name }}">
+                        {% else %}
+                        <div class="menu-item-img bg-light d-flex align-items-center justify-content-center">
+                            <i class="fas fa-utensils fa-3x text-muted"></i>
+                        </div>
+                        {% endif %}
+                        {% if item.video %}
+                        <div class="position-absolute top-0 start-0 m-2">
+                            <span class="badge bg-primary"><i class="fas fa-video me-1"></i>Video</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.description|truncatewords:15 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 mb-0">{{ item.price }} €</span>
+                            <a href="{% url 'menu-item-detail' item.id %}" class="btn btn-outline-primary">{% trans "View Details" %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'menu-list' %}" class="btn btn-outline-dark btn-lg">{% trans "View Full Menu" %}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Locations -->
+<section class="locations">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-4 mb-3">{% trans "Find Us" %}</h2>
+            <p class="lead">{% trans "30+ locations across Germany & Switzerland" %}</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="location-card">
+                    <h4><i class="fas fa-map-marker-alt me-2"></i>Berlin</h4>
+                    <p class="text-muted">Prenzlauer Berg & Mitte</p>
+                    <a href="https://60secondstonapoli.de/standort/berlin/" target="_blank" class="btn btn-sm btn-outline-light">{% trans "Details" %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="location-card">
+                    <h4><i class="fas fa-map-marker-alt me-2"></i>München</h4>
+                    <p class="text-muted">Restaurant & Winterwelt</p>
+                    <a href="https://60secondstonapoli.de/standort/muenchen-restaurant/" target="_blank" class="btn btn-sm btn-outline-light">{% trans "Details" %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="location-card">
+                    <h4><i class="fas fa-map-marker-alt me-2"></i>Hamburg</h4>
+                    <p class="text-muted">Winterhude & Großer Burstah</p>
+                    <a href="https://60secondstonapoli.de/standort/hamburg-winterhude/" target="_blank" class="btn btn-sm btn-outline-light">{% trans "Details" %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="location-card">
+                    <h4><i class="fas fa-map-marker-alt me-2"></i>Köln</h4>
+                    <p class="text-muted">Cologne Restaurant</p>
+                    <a href="https://60secondstonapoli.de/standort/koeln/" target="_blank" class="btn btn-sm btn-outline-light">{% trans "Details" %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="location-card">
+                    <h4><i class="fas fa-map-marker-alt me-2"></i>Düsseldorf</h4>
+                    <p class="text-muted">Düsseldorf Restaurant</p>
+                    <a href="https://60secondstonapoli.de/standort/duesseldorf/" target="_blank" class="btn btn-sm btn-outline-light">{% trans "Details" %}</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="location-card">
+                    <h4><i class="fas fa-map-marker-alt me-2"></i>Zürich</h4>
+                    <p class="text-muted">Switzerland</p>
+                    <a href="https://60secondstonapoli.de/standort/zuerich/" target="_blank" class="btn btn-sm btn-outline-light">{% trans "Details" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="https://60secondstonapoli.de/reservieren/" target="_blank" class="btn btn-primary btn-lg">
+                <i class="fas fa-calendar-check me-2"></i>{% trans "Reserve a Table" %}
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+    <div class="container">
+        <h2 class="section-title display-4 mb-3">{% trans "What Our Customers Say" %}</h2>
+        <p class="section-subtitle lead text-center text-muted mb-5">{% trans "Discover why our guests love us" %}</p>
+        
+        <!-- Review Stats -->
+        <div class="review-stats" id="review-stats">
+            <div class="review-stats-average">
+                <div class="review-stats-number">4.8</div>
+                <div class="review-stats-stars">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                </div>
+                <div class="review-stats-count">Based on {{ reviews|length|default:"150+" }} reviews</div>
+            </div>
+            <div class="review-stats-bars">
+                <div class="review-bar">
+                    <span class="review-bar-label">{% trans "5 stars" %}</span>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="review-bar-count">112</span>
+                </div>
+                <div class="review-bar">
+                    <span class="review-bar-label">{% trans "4 stars" %}</span>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: 18%"></div>
+                    </div>
+                    <span class="review-bar-count">27</span>
+                </div>
+                <div class="review-bar">
+                    <span class="review-bar-label">{% trans "3 stars" %}</span>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: 5%"></div>
+                    </div>
+                    <span class="review-bar-count">8</span>
+                </div>
+                <div class="review-bar">
+                    <span class="review-bar-label">{% trans "2 stars" %}</span>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: 2%"></div>
+                    </div>
+                    <span class="review-bar-count">2</span>
+                </div>
+                <div class="review-bar">
+                    <span class="review-bar-label">{% trans "1 star" %}</span>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: 1%"></div>
+                    </div>
+                    <span class="review-bar-count">1</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Reviews Container -->
+        <div id="reviews-container">
+            <div class="row g-4">
+                {% for review in reviews|slice:":6" %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">{{ review.customer_name|slice:":1"|upper }}</div>
+                            <div class="review-info">
+                                <div class="review-author">{{ review.customer_name }}</div>
+                                <div class="review-date">{{ review.created_at|date:"F j, Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <i class="fas fa-star star filled"></i>
+                                {% else %}
+                                    <i class="far fa-star star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="review-category-badge mb-2">
+                            {% if review.category == 'branch' %}
+                                <span class="badge bg-dark"><i class="fas fa-map-marker-alt me-1"></i>{% trans "Branch" %}</span>
+                            {% elif review.category == 'service' %}
+                                <span class="badge bg-dark"><i class="fas fa-concierge-bell me-1"></i>{% trans "Service" %}</span>
+                            {% elif review.category == 'product' %}
+                                <span class="badge bg-dark"><i class="fas fa-utensils me-1"></i>{% trans "Product" %}</span>
+                            {% else %}
+                                <span class="badge bg-dark"><i class="fas fa-comment me-1"></i>{% trans "General" %}</span>
+                            {% endif %}
+                        </div>
+                        <p class="review-content">{{ review.comment|truncatewords:30 }}</p>
+                        {% if review.category == 'product' and review.menu_item %}
+                        <div class="review-menu-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>{{ review.menu_item.name }}</span>
+                        </div>
+                        {% elif review.category == 'branch' and review.branch %}
+                        <div class="review-menu-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ review.branch.name }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <!-- Sample Reviews if none exist -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">M</div>
+                            <div class="review-info">
+                                <div class="review-author">Marco B.</div>
+                                <div class="review-date">January 15, 2026</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                        </div>
+                        <p class="review-content">The best Neapolitan pizza I've had outside of Naples! The crust is perfectly charred and the ingredients are top quality. Highly recommend the Margherita.</p>
+                        <div class="review-menu-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Margherita</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">S</div>
+                            <div class="review-info">
+                                <div class="review-author">Sophie L.</div>
+                                <div class="review-date">January 10, 2026</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                        </div>
+                        <p class="review-content">Amazing atmosphere and even better food! The staff was incredibly friendly and the pizza was served hot and fresh. Will definitely be coming back!</p>
+                        <div class="review-menu-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Quattro Formaggi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">A</div>
+                            <div class="review-info">
+                                <div class="review-author">Ahmed K.</div>
+                                <div class="review-date">January 5, 2026</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="fas fa-star star filled"></i>
+                            <i class="far fa-star star"></i>
+                        </div>
+                        <p class="review-content">Great pizza and quick service. The 60-second cooking method really makes a difference in the taste and texture. My new favorite pizza spot!</p>
+                        <div class="review-menu-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Diavola</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Write a Review CTA -->
+        <div class="text-center mt-5">
+            <a href="{% url 'menu-list' %}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-pen me-2"></i>Write a Review
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Reservation Section -->
+<section id="reservation" class="py-5" style="background-color: var(--color-dark-200);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="display-4 mb-4">Make a Reservation</h2>
+                <p class="lead mb-5">Book your table online and we'll contact you to confirm your reservation.</p>
+                
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        <form id="reservation-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Your Phone" required>
+                                        <label for="phone">Your Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="persons" required>
+                                            <option value="">Select Persons</option>
+                                            <option value="1">1 Person</option>
+                                            <option value="2">2 People</option>
+                                            <option value="3">3 People</option>
+                                            <option value="4">4 People</option>
+                                            <option value="5">5+ People</option>
+                                        </select>
+                                        <label for="persons">Number of Persons</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="date" required>
+                                        <label for="date">Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="time" class="form-control" id="time" required>
+                                        <label for="time">Time</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" style="height: 100px" placeholder="Special Requests"></textarea>
+                                        <label for="message">Special Requests</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Book a Table</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/reviews.js' %}"></script>
+{% endblock %}

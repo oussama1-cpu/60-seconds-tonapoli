@@ -1,0 +1,101 @@
+# German translations for 60 Seconds to Napoli
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de\n"
+
+msgid "Menu"
+msgstr "Speisekarte"
+
+msgid "About"
+msgstr "Über uns"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "My Account"
+msgstr "Mein Konto"
+
+msgid "My Orders"
+msgstr "Meine Bestellungen"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "Login"
+msgstr "Anmelden"
+
+msgid "Register"
+msgstr "Registrieren"
+
+msgid "Award Winning Neapolitan Pizza"
+msgstr "Preisgekrönte Neapolitanische Pizza"
+
+msgid "Original Neapolitan pizza with high-quality ingredients and a dough that rests for up to 72 hours and is baked at 485°C for just 60 seconds."
+msgstr "Original neapolitanische Pizza mit hochwertigen Zutaten und einem Teig, der bis zu 72 Stunden ruht und bei 485°C in nur 60 Sekunden gebacken wird."
+
+msgid "View Menu"
+msgstr "Speisekarte ansehen"
+
+msgid "Make a Reservation"
+msgstr "Reservierung vornehmen"
+
+msgid "485°C Wood Fire"
+msgstr "485°C Holzfeuer"
+
+msgid "Our pizzas are cooked in a traditional wood-fired oven at 485°C for the perfect Neapolitan crust."
+msgstr "Unsere Pizzen werden in einem traditionellen Holzofen bei 485°C für die perfekte neapolitanische Kruste gebacken."
+
+msgid "72h Dough"
+msgstr "72h Teig"
+
+msgid "Our dough is made with Italian flour and left to rise for 72 hours for optimal flavor and texture."
+msgstr "Unser Teig wird aus italienischem Mehl hergestellt und 72 Stunden gehen gelassen für optimalen Geschmack und Textur."
+
+msgid "Premium Ingredients"
+msgstr "Premium Zutaten"
+
+msgid "We use only the finest imported Italian ingredients, including San Marzano tomatoes and fresh mozzarella di bufala."
+msgstr "Wir verwenden nur die feinsten importierten italienischen Zutaten, darunter San Marzano Tomaten und frischen Mozzarella di Bufala."
+
+msgid "Our Specialties"
+msgstr "Unsere Spezialitäten"
+
+msgid "Discover our authentic Neapolitan pizzas"
+msgstr "Entdecken Sie unsere authentischen neapolitanischen Pizzen"
+
+msgid "View Details"
+msgstr "Details ansehen"
+
+msgid "View Full Menu"
+msgstr "Vollständige Speisekarte"
+
+msgid "Find Us"
+msgstr "Finden Sie uns"
+
+msgid "Visit us at one of our locations"
+msgstr "Besuchen Sie uns an einem unserer Standorte"
+
+msgid "What Our Customers Say"
+msgstr "Was unsere Kunden sagen"
+
+msgid "Discover why our guests love us"
+msgstr "Entdecken Sie, warum unsere Gäste uns lieben"
+
+msgid "5 stars"
+msgstr "5 Sterne"
+
+msgid "4 stars"
+msgstr "4 Sterne"
+
+msgid "3 stars"
+msgstr "3 Sterne"
+
+msgid "2 stars"
+msgstr "2 Sterne"
+
+msgid "1 star"
+msgstr "1 Stern"

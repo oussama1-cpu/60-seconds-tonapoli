@@ -1,0 +1,405 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/menu-detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/enhanced-menu-detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/related-items.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Item Hero Section -->
+<section class="item-hero">
+    <div class="container">
+        <h1>{{ menu_item.name }}</h1>
+        <p class="lead">{{ menu_item.category.name }}</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Enhanced Media Viewer -->
+            <div class="media-viewer">
+                <!-- Image/Video/3D Viewer Tabs -->
+                <ul class="nav nav-tabs" id="mediaTabs" role="tablist">
+                    {% if menu_item.image %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab">Photo</button>
+                    </li>
+                    {% endif %}
+                    {% if menu_item.video %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="video-tab" data-bs-toggle="tab" data-bs-target="#video" type="button" role="tab">Video</button>
+                    </li>
+                    {% endif %}
+                    {% if menu_item.model_3d %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="3d-tab" data-bs-toggle="tab" data-bs-target="#3d" type="button" role="tab">3D View</button>
+                    </li>
+                    {% endif %}
+                </ul>
+                
+                <div class="tab-content" id="mediaTabsContent">
+                    {% if menu_item.image %}
+                    <div class="tab-pane fade show active" id="image" role="tabpanel">
+                        <div class="item-image">
+                            <img src="{{ menu_item.image.url }}" alt="{{ menu_item.name }}" class="img-fluid">
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if menu_item.video %}
+                    <div class="tab-pane fade" id="video" role="tabpanel">
+                        <div class="video-container">
+                            <video controls class="w-100" {% if menu_item.video_thumbnail %}poster="{{ menu_item.video_thumbnail.url }}"{% endif %}>
+                                {% if menu_item.video %}
+                                <source src="{{ menu_item.video.url }}" type="video/mp4">
+                                {% endif %}
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if menu_item.model_3d %}
+                    <div class="tab-pane fade" id="3d" role="tabpanel">
+                        <div class="model-3d-container" id="model3d-viewer">
+                            <div class="d-flex align-items-center justify-content-center" style="height: 400px; background: #f8f9fa;">
+                                <div class="text-center">
+                                    <i class="fas fa-cube fa-3x text-muted mb-3"></i>
+                                    <p class="text-muted">3D Model Viewer</p>
+                                    <button class="btn btn-primary" id="load-3d-model">Load 3D Model</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <h2 class="item-title">{{ menu_item.name }}</h2>
+            <div class="item-price">{{ menu_item.price }} €</div>
+            
+            {% if menu_item.description %}
+            <div class="item-description">
+                {{ menu_item.description|linebreaks }}
+            </div>
+            {% endif %}
+            
+            <div class="item-details">
+                <div class="detail-item">
+                    <span class="detail-label">Category:</span>
+                    <span class="detail-value">{{ menu_item.category.name }}</span>
+                </div>
+                {% if menu_item.calories %}
+                <div class="detail-item">
+                    <span class="detail-label">Calories:</span>
+                    <span class="detail-value">{{ menu_item.calories }} kcal</span>
+                </div>
+                {% endif %}
+                {% if menu_item.is_vegetarian %}
+                <div class="detail-item">
+                    <span class="detail-label">Dietary:</span>
+                    <span class="detail-value">Vegetarian</span>
+                </div>
+                {% endif %}
+                {% if menu_item.is_gluten_free %}
+                <div class="detail-item">
+                    <span class="detail-label">Dietary:</span>
+                    <span class="detail-value">Gluten Free</span>
+                </div>
+                {% endif %}
+                {% if menu_item.is_spicy %}
+                <div class="detail-item">
+                    <span class="detail-label">Spice Level:</span>
+                    <span class="detail-value">Spicy</span>
+                </div>
+                {% endif %}
+            </div>
+            
+            {% if menu_item.customizations.all %}
+            <div class="customization-section">
+                <h3 class="customization-title">Customize Your Order</h3>
+                
+                <form id="customization-form">
+                    {% for customization in menu_item.customizations.all %}
+                    <div class="customization-option">
+                        <h5>{{ customization.name }}</h5>
+                        {% if customization.is_required %}
+                        <small class="text-muted">Required</small>
+                        {% else %}
+                        <small class="text-muted">Optional</small>
+                        {% endif %}
+                        
+                        {% if customization.type == 'single' %}
+                            {% for option in customization.options.all %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" 
+                                       name="customization-{{ customization.id }}" 
+                                       id="option-{{ option.id }}" 
+                                       value="{{ option.id }}"
+                                       {% if forloop.first and customization.is_required %}required{% endif %}>
+                                <label class="form-check-label" for="option-{{ option.id }}">
+                                    {{ option.name }}
+                                    {% if option.additional_price %}
+                                    <span class="text-muted">+{{ option.additional_price }} €</span>
+                                    {% endif %}
+                                </label>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            {% for option in customization.options.all %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       name="customization-{{ customization.id }}" 
+                                       id="option-{{ option.id }}" 
+                                       value="{{ option.id }}">
+                                <label class="form-check-label" for="option-{{ option.id }}">
+                                    {{ option.name }}
+                                    {% if option.additional_price %}
+                                    <span class="text-muted">+{{ option.additional_price }} €</span>
+                                    {% endif %}
+                                </label>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </form>
+            </div>
+            {% endif %}
+            
+            <div class="quantity-selector">
+                <button class="quantity-btn" id="decrease-qty">-</button>
+                <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                <button class="quantity-btn" id="increase-qty">+</button>
+            </div>
+            
+            <div class="action-buttons d-flex flex-wrap">
+                <button class="btn btn-primary me-2 mb-2" id="add-to-cart" data-item-id="{{ menu_item.id }}">
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart - {{ menu_item.price }} €
+                </button>
+                <button class="btn btn-outline-secondary mb-2" id="add-to-favorites" data-item-id="{{ menu_item.id }}">
+                    <i class="far fa-heart me-2"></i>Add to Favorites
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    {% if menu_item.nutrition_facts %}
+    <div class="nutrition-info">
+        <h3 class="nutrition-title">Nutritional Information</h3>
+        <div class="nutrition-grid">
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.calories|default:'0' }}</div>
+                <div class="nutrition-label">Calories</div>
+            </div>
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.protein|default:'0' }}g</div>
+                <div class="nutrition-label">Protein</div>
+            </div>
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.carbs|default:'0' }}g</div>
+                <div class="nutrition-label">Carbs</div>
+            </div>
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.fat|default:'0' }}g</div>
+                <div class="nutrition-label">Fat</div>
+            </div>
+            {% if menu_item.fiber %}
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.fiber }}g</div>
+                <div class="nutrition-label">Fiber</div>
+            </div>
+            {% endif %}
+            {% if menu_item.sugar %}
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.sugar }}g</div>
+                <div class="nutrition-label">Sugar</div>
+            </div>
+            {% endif %}
+            {% if menu_item.sodium %}
+            <div class="nutrition-item">
+                <div class="nutrition-value">{{ menu_item.sodium }}mg</div>
+                <div class="nutrition-label">Sodium</div>
+            </div>
+            {% endif %}
+        </div>
+        
+        {% if menu_item.allergens %}
+        <div class="mt-4">
+            <h5>Allergens</h5>
+            <p class="mb-0">{{ menu_item.allergens }}</p>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    {% if menu_item.ingredients.all %}
+    <div class="ingredients-section mt-4">
+        <h4 class="mb-3">Ingredients & Origin</h4>
+        <div class="row">
+            {% for menu_ingredient in menu_item.ingredients.all %}
+            <div class="col-md-6 mb-3">
+                <div class="ingredient-card">
+                    <div class="d-flex align-items-center">
+                        {% if menu_ingredient.ingredient.image %}
+                        <img src="{{ menu_ingredient.ingredient.image.url }}" alt="{{ menu_ingredient.ingredient.name }}" class="ingredient-image me-3">
+                        {% else %}
+                        <div class="ingredient-placeholder me-3">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        {% endif %}
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">{{ menu_ingredient.ingredient.name }}</h6>
+                            {% if menu_ingredient.quantity %}
+                            <small class="text-muted">{{ menu_ingredient.quantity }}</small>
+                            {% endif %}
+                            {% if menu_ingredient.ingredient.origin %}
+                            <div class="small text-primary">
+                                <i class="fas fa-map-marker-alt me-1"></i>{{ menu_ingredient.ingredient.origin }}
+                            </div>
+                            {% endif %}
+                            {% if menu_ingredient.ingredient.organic %}
+                            <span class="badge bg-success me-1">Organic</span>
+                            {% endif %}
+                            {% if menu_ingredient.ingredient.seasonal %}
+                            <span class="badge bg-warning text-dark">Seasonal</span>
+                            {% endif %}
+                            {% if menu_ingredient.ingredient.is_allergen %}
+                            <span class="badge bg-danger">Allergen</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if menu_ingredient.ingredient.description %}
+                    <div class="mt-2">
+                        <small class="text-muted">{{ menu_ingredient.ingredient.description|truncatewords:20 }}</small>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="reviews-section mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4>Customer Reviews</h4>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                <i class="fas fa-star me-1"></i> Write Review
+            </button>
+        </div>
+        
+        {% if menu_item.reviews.all %}
+        <div class="reviews-list">
+            {% for review in menu_item.reviews.all %}
+            {% if review.is_approved %}
+            <div class="review-card mb-3">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-1">{{ review.customer_name }}</h6>
+                        <div class="rating mb-2">
+                            {% for i in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                            <i class="fas fa-star text-warning"></i>
+                            {% else %}
+                            <i class="far fa-star text-warning"></i>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                </div>
+                {% if review.comment %}
+                <p class="mb-0">{{ review.comment }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-4 text-muted">
+            <i class="fas fa-star fa-2x mb-3"></i>
+            <p>No reviews yet. Be the first to review this item!</p>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Write a Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="review-form">
+                        <input type="hidden" name="category" value="product">
+                        <input type="hidden" name="menu_item_id" value="{{ menu_item.id }}">
+                        <div class="mb-3">
+                            <label for="customer-name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="customer-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="rating-input">
+                                {% for i in "12345" %}
+                                <i class="far fa-star rating-star" data-rating="{{ forloop.counter }}"></i>
+                                {% endfor %}
+                                <input type="hidden" id="rating-value" name="rating" value="5" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="review-comment" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="review-comment" rows="4" placeholder="Tell us about this dish..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submit-review">Submit Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Related Items Section -->
+    {% if related_items %}
+    <div class="related-items mt-5">
+        <h3 class="mb-4">You Might Also Like</h3>
+        <div class="row">
+            {% for item in related_items %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text text-muted">{{ item.description|truncatewords:15 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 mb-0">{{ item.price }} €</span>
+                            <a href="{% url 'menu-item-detail' item.id %}" class="btn btn-outline-primary btn-sm">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/menu-detail.js' %}"></script>
+<script src="{% static 'js/enhanced-menu-detail.js' %}"></script>
+{% endblock %}

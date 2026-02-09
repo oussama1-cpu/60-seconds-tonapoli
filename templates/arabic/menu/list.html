@@ -1,0 +1,260 @@
+{% extends 'base/base_arabic.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "القائمة - 60 ثانية لنابولي" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/enhanced-menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/image-placeholders.css' %}">
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Menu Hero Section -->
+<section class="menu-hero">
+    <div class="container">
+        <h1>{% trans "قائمتنا" %}</h1>
+        <p class="lead">{% trans "اكتشف بيتزا نابولي الأصيلة والتخصصات الإيطالية" %}</p>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Search and Filter Section -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <!-- Search Bar -->
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                <input type="text" class="form-control" id="search-input" placeholder="{% trans 'ابحث في أصناف القائمة...' %}">
+                            </div>
+                        </div>
+                        
+                        <!-- Dietary Filters -->
+                        <div class="col-md-5">
+                            <div class="btn-group w-100" role="group">
+                                <input type="checkbox" class="btn-check" id="filter-vegetarian">
+                                <label class="btn btn-outline-success" for="filter-vegetarian">
+                                    <i class="fas fa-leaf me-1"></i>{% trans "نباتي" %}
+                                </label>
+                                
+                                <input type="checkbox" class="btn-check" id="filter-vegan">
+                                <label class="btn btn-outline-success" for="filter-vegan">
+                                    <i class="fas fa-seedling me-1"></i>{% trans "نباتي صرف" %}
+                                </label>
+                                
+                                <input type="checkbox" class="btn-check" id="filter-glutenfree">
+                                <label class="btn btn-outline-warning" for="filter-glutenfree">
+                                    <i class="fas fa-bread-slice me-1"></i>{% trans "خالي من الجلوتين" %}
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Sort Options -->
+                        <div class="col-md-3">
+                            <select class="form-select" id="sort-select">
+                                <option value="name">{% trans "ترتيب حسب الاسم" %}</option>
+                                <option value="price-low">{% trans "السعر: من الأقل إلى الأعلى" %}</option>
+                                <option value="price-high">{% trans "السعر: من الأعلى إلى الأقل" %}</option>
+                                <option value="rating">{% trans "الأعلى تقييماً" %}</option>
+                                <option value="popular">{% trans "الأكثر شعبية" %}</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Filters Display -->
+                    <div class="mt-3" id="active-filters">
+                        <small class="text-muted">{% trans "الفلاتر النشطة:" %} </small>
+                        <span id="filter-tags"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Category Navigation -->
+        <div class="col-lg-3">
+            <div class="card shadow-sm menu-category-nav">
+                <div class="card-body">
+                    <h5 class="mb-4">{% trans "الفئات" %}</h5>
+                    <div class="nav flex-column">
+                        {% for category in categories %}
+                        <a href="#category-{{ category.id }}" class="category-nav-link {% if forloop.first %}active{% endif %}" data-category-id="{{ category.id }}">
+                            {{ category.name }}
+                            <span class="badge bg-secondary me-auto">{{ category.items.all|length }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="mt-4 pt-3 border-top">
+                        <h6 class="text-muted">{% trans "إحصائيات سريعة" %}</h6>
+                        <div class="d-flex justify-content-between mb-2">
+                            <small>{% trans "إجمالي الأصناف:" %}</small>
+                            <small class="fw-bold" id="total-items">0</small>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <small>{% trans "المفلترة:" %}</small>
+                            <small class="fw-bold text-primary" id="filtered-items">0</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu Items -->
+        <div class="col-lg-9">
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="text-center py-5" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">{% trans "جاري التحميل..." %}</span>
+                </div>
+                <p class="mt-2 text-muted">{% trans "جاري فلترة أصناف القائمة..." %}</p>
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="no-results" class="text-center py-5" style="display: none;">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h5>{% trans "لم يتم العثور على أصناف" %}</h5>
+                <p class="text-muted">{% trans "حاول تعديل الفلاتر أو مصطلحات البحث" %}</p>
+                <button class="btn btn-outline-primary" id="clear-filters">{% trans "مسح جميع الفلاتر" %}</button>
+            </div>
+            
+            <!-- Menu Items Grid -->
+            <div id="menu-items-container">
+                {% for category in categories %}
+                <section id="category-{{ category.id }}" class="category-section" data-category-id="{{ category.id }}">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="category-title mb-0">{{ category.name }}</h2>
+                        <span class="badge bg-primary category-count">{{ category.items.all|length }} {% trans "صنف" %}</span>
+                    </div>
+                    <div class="row g-4 menu-items-grid">
+                        {% for item in category.items.all %}
+                        <div class="col-md-6 col-lg-6 menu-item-wrapper" 
+                             data-item-id="{{ item.id }}"
+                             data-item-name="{{ item.name|lower }}"
+                             data-item-price="{{ item.price }}"
+                             data-item-category="{{ category.name|lower }}"
+                             data-vegetarian="{{ item.is_vegetarian|yesno:'true,false' }}"
+                             data-vegan="{{ item.is_vegan|yesno:'true,false' }}"
+                             data-glutenfree="{{ item.is_gluten_free|yesno:'true,false' }}"
+                             data-rating="{% if item.reviews.approved %}{{ item.reviews.approved.aggregate.rating__avg|default:0 }}{% else %}0{% endif %}">
+                            <div class="card menu-item-card h-100">
+                                <div class="position-relative">
+                                    {% if item.image %}
+                                    <img src="{{ item.image.url }}" class="card-img-top menu-item-img" alt="{{ item.name }}">
+                                    {% else %}
+                                    <div class="menu-item-img bg-light d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <!-- Dietary Badges -->
+                                    <div class="position-absolute top-2 start-2">
+                                        {% if item.is_vegetarian %}
+                                        <span class="badge bg-success ms-1"><i class="fas fa-leaf"></i></span>
+                                        {% endif %}
+                                        {% if item.is_vegan %}
+                                        <span class="badge bg-success ms-1"><i class="fas fa-seedling"></i></span>
+                                        {% endif %}
+                                        {% if item.is_gluten_free %}
+                                        <span class="badge bg-warning"><i class="fas fa-bread-slice"></i></span>
+                                        {% endif %}
+                                        {% if item.is_featured %}
+                                        <span class="badge bg-danger"><i class="fas fa-star"></i></span>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    <!-- Quick View Button -->
+                                    <div class="position-absolute bottom-2 start-2">
+                                        <button class="btn btn-light btn-sm quick-view-btn" data-item-id="{{ item.id }}">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h5 class="card-title">{{ item.name }}</h5>
+                                        <span class="h5 mb-0 text-primary">{{ item.price }} €</span>
+                                    </div>
+                                    
+                                    <!-- Rating Display -->
+                                    {% if item.reviews.approved %}
+                                    <div class="mb-2">
+                                        {% with avg_rating=item.reviews.approved.aggregate.rating__avg|default:0 %}
+                                        <div class="rating-stars">
+                                            {% for i in "12345" %}
+                                            {% if forloop.counter <= avg_rating|floatformat:0 %}
+                                            <i class="fas fa-star text-warning"></i>
+                                            {% else %}
+                                            <i class="far fa-star text-warning"></i>
+                                            {% endif %}
+                                            {% endfor %}
+                                            <small class="text-muted ms-1">({{ item.reviews.approved.count }})</small>
+                                        </div>
+                                        {% endwith %}
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {% if item.description %}
+                                    <p class="card-text text-muted small">{{ item.description|truncatewords:15 }}</p>
+                                    {% endif %}
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                                        <div class="btn-group">
+                                            <a href="{% url 'menu-item-detail' item.id %}" class="btn btn-outline-primary btn-sm">
+                                                <i class="fas fa-info-circle me-1"></i>{% trans "التفاصيل" %}
+                                            </a>
+                                            <button class="btn btn-primary btn-sm add-to-cart-btn" data-item-id="{{ item.id }}">
+                                                <i class="fas fa-shopping-cart me-1"></i>{% trans "أضف" %}
+                                            </button>
+                                        </div>
+                                        <button class="btn btn-outline-danger btn-sm wishlist-btn" data-item-id="{{ item.id }}">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal fade" id="quickViewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quickViewTitle">{% trans "تفاصيل الصنف" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="quickViewBody">
+                <!-- Content will be loaded dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "إغلاق" %}</button>
+                <button type="button" class="btn btn-primary" id="quickViewAddToCart">{% trans "أضف إلى السلة" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/menu.js' %}"></script>
+<script src="{% static 'js/enhanced-menu.js' %}"></script>
+<script src="{% static 'js/image-placeholders.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+<script src="{% static 'js/rtl.js' %}"></script>
+{% endblock %}

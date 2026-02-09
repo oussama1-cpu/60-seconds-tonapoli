@@ -1,0 +1,268 @@
+.about-hero {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85)),
+                url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80') no-repeat center center/cover;
+    color: white;
+    padding: 150px 0;
+    text-align: center;
+    margin-bottom: 0;
+    border-bottom: 1px solid #222;
+    background-attachment: fixed;
+}
+
+.about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.about-section {
+    margin-bottom: 5rem;
+    padding: 5rem 0;
+    background: #000;
+}
+
+.about-section p {
+    color: #aaa;
+    line-height: 1.8;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #fff;
+}
+
+/* Dark theme for bg-light sections */
+.bg-light {
+    background: #0a0a0a !important;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.bg-light .section-title {
+    color: #fff;
+}
+
+.bg-light .lead {
+    color: #888;
+}
+
+.bg-light .section-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-img {
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+
+.about-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.about-img:hover img {
+    transform: scale(1.05);
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.team-member-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 3px solid #fff;
+}
+
+.team-member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h4 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.team-member p {
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #444;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background-color: #0a0a0a;
+    border-radius: 0;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-box:hover {
+    border-color: #fff;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.feature-box h4 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.feature-box p {
+    color: #888;
+    margin-bottom: 0;
+}
+
+.testimonial-card {
+    background-color: #0a0a0a;
+    border-radius: 0;
+    padding: 2rem;
+    border: 1px solid #222;
+    margin-bottom: 2rem;
+    height: 100%;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.testimonial-text:before {
+    content: '\201C';
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    color: #fff;
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    line-height: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.testimonial-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-info h5 {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.testimonial-info p {
+    margin-bottom: 0;
+    color: #888;
+    font-size: 0.875rem;
+}
+
+.rating {
+    color: #ffc107;
+    margin-bottom: 0.5rem;
+}
+
+/* Visit Us Section */
+.py-5:not(.bg-light) {
+    background: #000;
+}
+
+.py-5 p {
+    color: #aaa;
+}
+
+.py-5 .list-unstyled li {
+    color: #aaa;
+}
+
+.py-5 .list-unstyled strong {
+    color: #fff;
+}
+
+.py-5 h5 {
+    color: #fff;
+}
+
+@media (max-width: 767.98px) {
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .about-img {
+        margin-bottom: 2rem;
+    }
+}

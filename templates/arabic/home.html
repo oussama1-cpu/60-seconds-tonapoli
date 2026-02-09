@@ -1,0 +1,292 @@
+{% extends 'base/base_arabic.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "الرئيسية - 60 ثانية لنابولي" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="hero-title display-3 fw-bold mb-4">
+                        {% trans "أصيل بيتزا نابولية" %}
+                        <br>
+                        <span class="text-primary">{% trans "في 60 ثانية" %}</span>
+                    </h1>
+                    <p class="hero-subtitle lead mb-4">
+                        {% trans "استمتع بأفضل البيتزا النابولية الأصيلة مع مكونات طازجة من إيطاليا ومطعمين محترفين" %}
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="{% url 'menu-list' %}" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-utensils me-2"></i>
+                            {% trans "اطلب الآن" %}
+                        </a>
+                        <a href="{% url 'menu-list' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-book-open me-2"></i>
+                            {% trans "عرض القائمة" %}
+                        </a>
+                    </div>
+                    
+                    <!-- Features -->
+                    <div class="hero-features mt-5">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-clock text-primary mb-2"></i>
+                                    <h6>{% trans "توصيل سريع" %}</h6>
+                                    <small class="text-muted">{% trans "25-35 دقيقة" %}</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-award text-primary mb-2"></i>
+                                    <h6>{% trans "جودة عالية" %}</h6>
+                                    <small class="text-muted">{% trans "مكونات طازجة" %}</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt text-primary mb-2"></i>
+                                    <h6>{% trans "دفع آمن" %}</h6>
+                                    <small class="text-muted">{% trans "طرق دفع متعددة" %}</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-heart text-primary mb-2"></i>
+                                    <h6>{% trans "مصنوع بحب" %}</h5>
+                                    <small class="text-muted">{% trans "مطعمون محترفون" %}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <div class="pizza-animation">
+                        <i class="fas fa-pizza-slice fa-5x text-primary"></i>
+                        <div class="pizza-steam">
+                            <i class="fas fa-cloud fa-2x text-muted"></i>
+                            <i class="fas fa-cloud fa-2x text-muted"></i>
+                            <i class="fas fa-cloud fa-2x text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Items -->
+<section class="featured-items py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">{% trans "الأصناف المميزة" %}</h2>
+            <p class="lead text-muted">{% trans "اكتشف أشهر أطباقنا المفضلة لدى عملائنا" %}</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for item in featured_items %}
+            <div class="col-md-4">
+                <div class="card menu-item-card h-100">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" class="card-img-top menu-item-img" alt="{{ item.name }}">
+                    {% else %}
+                    <div class="menu-item-img bg-light d-flex align-items-center justify-content-center">
+                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <span class="h5 mb-0 text-primary">{{ item.price }} €</span>
+                        </div>
+                        {% if item.description %}
+                        <p class="card-text text-muted small">{{ item.description|truncatewords:15 }}</p>
+                        {% endif %}
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <a href="{% url 'menu-item-detail' item.id %}" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-info-circle me-1"></i>
+                                {% trans "التفاصيل" %}
+                            </a>
+                            <button class="btn btn-primary btn-sm add-to-cart-btn" data-item-id="{{ item.id }}">
+                                <i class="fas fa-shopping-cart me-1"></i>
+                                {% trans "أضف" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'menu-list' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-th me-2"></i>
+                {% trans "عرض القائمة الكاملة" %}
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-image">
+                    <img src="{% static 'images/about-pizza.jpg' %}" class="img-fluid rounded-3" alt="{% trans 'مطعم 60 ثانية لنابولي' %}">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h2 class="display-5 fw-bold mb-4">{% trans "قصة مطعمنا" %}</h2>
+                    <p class="lead mb-3">
+                        {% trans "في 60 ثانية لنابولي، نحن نؤمن بأن البيتزا الجيدة تحتاج إلى وقت ومكونات عالية الجودة" %}
+                    </p>
+                    <p class="mb-4">
+                        {% trans "نحضر بيتزا نابولية أصيلة باستخدام تقنيات تقليدية ومكونات مستوردة مباشرة من إيطاليا. فرننا الحجري يضمن طبخ مثالي في 60 ثانية فقط، تماماً كما في نابولي." %}
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <div class="stat-item">
+                                <h3 class="text-primary fw-bold">500+</h3>
+                                <p class="text-muted mb-0">{% trans "عميل سعيد يومياً" %}</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-item">
+                                <h3 class="text-primary fw-bold">25</h3>
+                                <p class="text-muted mb-0">{% trans "نوع بيتزا مختلف" %}</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-item">
+                                <h3 class="text-primary fw-bold">4.9</h3>
+                                <p class="text-muted mb-0">{% trans "تقييم النجوم" %}</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-item">
+                                <h3 class="text-primary fw-bold">60</h3>
+                                <p class="text-muted mb-0">{% trans "ثانية للطبخ" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="{% url 'about' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>
+                        {% trans "اعرف المزيد" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">{% trans "آراء عملائنا" %}</h2>
+            <p class="lead text-muted">{% trans "نحن فخورون بتقييمات عملائنا" %}</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text mb-3">
+                        "{% trans "أفضل بيتزا تناولتها في برلين! المكونات طازجة والخدمة ممتازة. أوصي بها بشدة." %}"
+                    </p>
+                    <div class="testimonial-author">
+                        <h6 class="mb-0">{% trans "أحمد محمد" %}</h6>
+                        <small class="text-muted">{% trans "عميل منتظم" %}</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text mb-3">
+                        "{% trans "التوصيل سريع جداً والبيتزا دائماً ساخنة. جودة ممتازة وسعر معقول." %}"
+                    </p>
+                    <div class="testimonial-author">
+                        <h6 class="mb-0">{% trans "فاطمة علي" %}</h6>
+                        <small class="text-muted">{% trans "عميلة جديدة" %}</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="testimonial-text mb-3">
+                        "{% trans "طعم البيتزا يشبه تماماً ما تناولته في نابولي. أصيل ولذيذ جداً!" %}"
+                    </p>
+                    <div class="testimonial-author">
+                        <h6 class="mb-0">{% trans "خالد سالم" %}</h6>
+                        <small class="text-muted">{% trans "ناقد طعام" %}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-3">
+                    {% trans "جائع؟ اطلب بيتزاك الآن!" %}
+                </h2>
+                <p class="lead mb-0">
+                    {% trans "توصيل سريع في جميع أنحاء برلين. اطلب الآن واستمتع بأفضل بيتزا نابولية." %}
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-start">
+                <a href="{% url 'menu-list' %}" class="btn btn-light btn-lg">
+                    <i class="fas fa-shopping-cart me-2"></i>
+                    {% trans "اطلب الآن" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/rtl.js' %}"></script>
+{% endblock %}

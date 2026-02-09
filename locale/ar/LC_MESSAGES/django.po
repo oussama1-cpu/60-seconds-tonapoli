@@ -1,0 +1,414 @@
+# Arabic translations for 60 Seconds to Napoli
+# This file is distributed under the same license as the 60 Seconds to Napoli package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 60 Seconds to Napoli\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: Your Name <your.email@example.com>\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: templates/base/base_arabic.html:4
+msgid "60 Seconds to Napoli"
+msgstr "60 ثانية لنابولي"
+
+#: templates/base/base_arabic.html:5
+msgid "Best Neapolitan pizza restaurant in Berlin"
+msgstr "أفضل مطعم بيتزا نابولية في برلين"
+
+#: templates/base/base_arabic.html:25
+msgid "Home"
+msgstr "الرئيسية"
+
+#: templates/base/base_arabic.html:28
+msgid "Menu"
+msgstr "القائمة"
+
+#: templates/base/base_arabic.html:31
+msgid "About"
+msgstr "من نحن"
+
+#: templates/base/base_arabic.html:34
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: templates/base/base_arabic.html:39
+msgid "Language"
+msgstr "اللغة"
+
+#: templates/base/base_arabic.html:46
+msgid "Cart"
+msgstr "السلة"
+
+#: templates/base/base_arabic.html:56
+msgid "We offer you the best authentic Neapolitan pizza with fresh ingredients and professional chefs"
+msgstr "نقدم لكم أفضل البيتزا النابولية الأصيلة مع مكونات طازجة ومطعمين محترفين"
+
+#: templates/base/base_arabic.html:65
+msgid "Quick Links"
+msgstr "روابط سريعة"
+
+#: templates/base/base_arabic.html:78
+msgid "Contact Information"
+msgstr "معلومات التواصل"
+
+#: templates/base/base_arabic.html:79
+msgid "Main Street 123, Berlin, Germany"
+msgstr "شارع الرئيسي 123، برلين، ألمانيا"
+
+#: templates/base/base_arabic.html:84
+msgid "Sunday - Thursday: 11:00 AM - 11:00 PM"
+msgstr "الأحد - الخميس: 11:00 ص - 11:00 م"
+
+#: templates/base/base_arabic.html:92
+msgid "All rights reserved © 2024 60 Seconds to Napoli"
+msgstr "جميع الحقوق محفوظة © 2024 60 ثانية لنابولي"
+
+#: templates/base/base_arabic.html:95
+msgid "We accept:"
+msgstr "نقبل:"
+
+#: templates/arabic/home.html:4
+msgid "Home - 60 Seconds to Napoli"
+msgstr "الرئيسية - 60 ثانية لنابولي"
+
+#: templates/arabic/home.html:25
+msgid "Authentic Neapolitan Pizza"
+msgstr "أصيل بيتزا نابولية"
+
+#: templates/arabic/home.html:27
+msgid "in 60 Seconds"
+msgstr "في 60 ثانية"
+
+#: templates/arabic/home.html:30
+msgid "Enjoy the best authentic Neapolitan pizza with fresh ingredients from Italy and professional chefs"
+msgstr "استمتع بأفضل البيتزا النابولية الأصيلة مع مكونات طازجة من إيطاليا ومطعمين محترفين"
+
+#: templates/arabic/home.html:35
+msgid "Order Now"
+msgstr "اطلب الآن"
+
+#: templates/arabic/home.html:38
+msgid "View Menu"
+msgstr "عرض القائمة"
+
+#: templates/arabic/home.html:48
+msgid "Fast Delivery"
+msgstr "توصيل سريع"
+
+#: templates/arabic/home.html:50
+msgid "25-35 minutes"
+msgstr "25-35 دقيقة"
+
+#: templates/arabic/home.html:54
+msgid "High Quality"
+msgstr "جودة عالية"
+
+#: templates/arabic/home.html:56
+msgid "Fresh ingredients"
+msgstr "مكونات طازجة"
+
+#: templates/arabic/home.html:60
+msgid "Secure Payment"
+msgstr "دفع آمن"
+
+#: templates/arabic/home.html:62
+msgid "Multiple payment methods"
+msgstr "طرق دفع متعددة"
+
+#: templates/arabic/home.html:66
+msgid "Made with Love"
+msgstr "مصنوع بحب"
+
+#: templates/arabic/home.html:68
+msgid "Professional chefs"
+msgstr "مطعمون محترفون"
+
+#: templates/arabic/home.html:82
+msgid "Featured Items"
+msgstr "الأصناف المميزة"
+
+#: templates/arabic/home.html:83
+msgid "Discover our most popular dishes loved by our customers"
+msgstr "اكتشف أشهر أطباقنا المفضلة لدى عملائنا"
+
+#: templates/arabic/home.html:110
+#: templates/arabic/menu/list.html:215
+msgid "Details"
+msgstr "التفاصيل"
+
+#: templates/arabic/home.html:113
+msgid "Add"
+msgstr "أضف"
+
+#: templates/arabic/home.html:121
+msgid "View Full Menu"
+msgstr "عرض القائمة الكاملة"
+
+#: templates/arabic/home.html:130
+msgid "Our Story"
+msgstr "قصة مطعمنا"
+
+#: templates/arabic/home.html:132
+msgid "At 60 Seconds to Napoli, we believe that good pizza needs time and high-quality ingredients"
+msgstr "في 60 ثانية لنابولي، نحن نؤمن بأن البيتزا الجيدة تحتاج إلى وقت ومكونات عالية الجودة"
+
+#: templates/arabic/home.html:135
+msgid "We prepare authentic Neapolitan pizza using traditional techniques and ingredients imported directly from Italy. Our stone oven ensures perfect cooking in just 60 seconds, exactly like in Naples."
+msgstr "نحضر بيتزا نابولية أصيلة باستخدام تقنيات تقليدية ومكونات مستوردة مباشرة من إيطاليا. فرننا الحجري يضمن طبخ مثالي في 60 ثانية فقط، تماماً كما في نابولي."
+
+#: templates/arabic/home.html:147
+msgid "Happy customers daily"
+msgstr "عميل سعيد يومياً"
+
+#: templates/arabic/home.html:151
+msgid "Different pizza types"
+msgstr "نوع بيتزا مختلف"
+
+#: templates/arabic/home.html:155
+msgid "Star rating"
+msgstr "تقييم النجوم"
+
+#: templates/arabic/home.html:159
+msgid "Seconds to cook"
+msgstr "ثانية للطبخ"
+
+#: templates/arabic/home.html:165
+msgid "Learn More"
+msgstr "اعرف المزيد"
+
+#: templates/arabic/home.html:175
+msgid "Customer Reviews"
+msgstr "آراء عملائنا"
+
+#: templates/arabic/home.html:176
+msgid "We are proud of our customer ratings"
+msgstr "نحن فخورون بتقييمات عملائنا"
+
+#: templates/arabic/home.html:191
+msgid "Ahmed Mohamed"
+msgstr "أحمد محمد"
+
+#: templates/arabic/home.html:192
+msgid "Regular customer"
+msgstr "عميل منتظم"
+
+#: templates/arabic/home.html:195
+msgid "The best pizza I've had in Berlin! Fresh ingredients and excellent service. Highly recommend."
+msgstr "أفضل بيتزا تناولتها في برلين! المكونات طازجة والخدمة ممتازة. أوصي بها بشدة."
+
+#: templates/arabic/home.html:205
+msgid "Fatima Ali"
+msgstr "فاطمة علي"
+
+#: templates/arabic/home.html:206
+msgid "New customer"
+msgstr "عميلة جديدة"
+
+#: templates/arabic/home.html:209
+msgid "Very fast delivery and pizza is always hot. Excellent quality and reasonable price."
+msgstr "التوصيل سريع جداً والبيتزا دائماً ساخنة. جودة ممتازة وسعر معقول."
+
+#: templates/arabic/home.html:219
+msgid "Khaled Salem"
+msgstr "خالد سالم"
+
+#: templates/arabic/home.html:220
+msgid "Food critic"
+msgstr "ناقد طعام"
+
+#: templates/arabic/home.html:223
+msgid "The pizza taste is exactly like what I had in Naples. Authentic and very delicious!"
+msgstr "طعم البيتزا يشبه تماماً ما تناولته في نابولي. أصيل ولذيذ جداً!"
+
+#: templates/arabic/home.html:233
+msgid "Hungry? Order your pizza now!"
+msgstr "جائع؟ اطلب بيتزاك الآن!"
+
+#: templates/arabic/home.html:235
+msgid "Fast delivery throughout Berlin. Order now and enjoy the best Neapolitan pizza."
+msgstr "توصيل سريع في جميع أنحاء برلين. اطلب الآن واستمتع بأفضل بيتزا نابولية."
+
+#: templates/arabic/menu/list.html:4
+msgid "Menu - 60 Seconds to Napoli"
+msgstr "القائمة - 60 ثانية لنابولي"
+
+#: templates/arabic/menu/list.html:17
+msgid "Discover our authentic Neapolitan pizzas and Italian specialties"
+msgstr "اكتشف بيتزا نابولي الأصيلة والتخصصات الإيطالية"
+
+#: templates/arabic/menu/list.html:28
+msgid "Search menu items..."
+msgstr "ابحث في أصناف القائمة..."
+
+#: templates/arabic/menu/list.html:37
+msgid "Vegetarian"
+msgstr "نباتي"
+
+#: templates/arabic/menu/list.html:41
+msgid "Vegan"
+msgstr "نباتي صرف"
+
+#: templates/arabic/menu/list.html:45
+msgid "Gluten-Free"
+msgstr "خالي من الجلوتين"
+
+#: templates/arabic/menu/list.html:54
+msgid "Sort by Name"
+msgstr "ترتيب حسب الاسم"
+
+#: templates/arabic/menu/list.html:55
+msgid "Price: Low to High"
+msgstr "السعر: من الأقل إلى الأعلى"
+
+#: templates/arabic/menu/list.html:56
+msgid "Price: High to Low"
+msgstr "السعر: من الأعلى إلى الأقل"
+
+#: templates/arabic/menu/list.html:57
+msgid "Highest Rated"
+msgstr "الأعلى تقييماً"
+
+#: templates/arabic/menu/list.html:58
+msgid "Most Popular"
+msgstr "الأكثر شعبية"
+
+#: templates/arabic/menu/list.html:67
+msgid "Active filters:"
+msgstr "الفلاتر النشطة:"
+
+#: templates/arabic/menu/list.html:79
+msgid "Categories"
+msgstr "الفئات"
+
+#: templates/arabic/menu/list.html:92
+msgid "Quick Stats"
+msgstr "إحصائيات سريعة"
+
+#: templates/arabic/menu/list.html:95
+msgid "Total Items:"
+msgstr "إجمالي الأصناف:"
+
+#: templates/arabic/menu/list.html:99
+msgid "Filtered:"
+msgstr "المفلترة:"
+
+#: templates/arabic/menu/list.html:112
+msgid "Loading..."
+msgstr "جاري التحميل..."
+
+#: templates/arabic/menu/list.html:116
+msgid "Filtering menu items..."
+msgstr "جاري فلترة أصناف القائمة..."
+
+#: templates/arabic/menu/list.html:123
+msgid "No items found"
+msgstr "لم يتم العثور على أصناف"
+
+#: templates/arabic/menu/list.html:125
+msgid "Try adjusting your filters or search terms"
+msgstr "حاول تعديل الفلاتر أو مصطلحات البحث"
+
+#: templates/arabic/menu/list.html:128
+msgid "Clear All Filters"
+msgstr "مسح جميع الفلاتر"
+
+#: templates/arabic/menu/list.html:149
+msgid "Item Details"
+msgstr "تفاصيل الصنف"
+
+#: templates/arabic/menu/list.html:152
+msgid "Add to Cart"
+msgstr "أضف إلى السلة"
+
+#: templates/arabic/menu/list.html:251
+msgid "Close"
+msgstr "إغلاق"
+
+msgid "Admin"
+msgstr "لوحة التحكم"
+
+msgid "My Account"
+msgstr "حسابي"
+
+msgid "My Orders"
+msgstr "طلباتي"
+
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Register"
+msgstr "إنشاء حساب"
+
+msgid "Award Winning Neapolitan Pizza"
+msgstr "بيتزا نابولية حائزة على جوائز"
+
+msgid "Original Neapolitan pizza with high-quality ingredients and a dough that rests for up to 72 hours and is baked at 485°C for just 60 seconds."
+msgstr "بيتزا نابولية أصلية مع مكونات عالية الجودة وعجينة ترتاح لمدة 72 ساعة وتُخبز عند 485 درجة مئوية في 60 ثانية فقط."
+
+msgid "Make a Reservation"
+msgstr "احجز طاولة"
+
+msgid "485°C Wood Fire"
+msgstr "فرن حطب 485 درجة"
+
+msgid "Our pizzas are cooked in a traditional wood-fired oven at 485°C for the perfect Neapolitan crust."
+msgstr "تُطهى البيتزا لدينا في فرن حطب تقليدي عند 485 درجة مئوية للحصول على قشرة نابولية مثالية."
+
+msgid "72h Dough"
+msgstr "عجينة 72 ساعة"
+
+msgid "Our dough is made with Italian flour and left to rise for 72 hours for optimal flavor and texture."
+msgstr "تُصنع عجينتنا من الدقيق الإيطالي وتُترك لترتفع لمدة 72 ساعة للحصول على نكهة وقوام مثالي."
+
+msgid "Premium Ingredients"
+msgstr "مكونات فاخرة"
+
+msgid "We use only the finest imported Italian ingredients, including San Marzano tomatoes and fresh mozzarella di bufala."
+msgstr "نستخدم فقط أفضل المكونات الإيطالية المستوردة، بما في ذلك طماطم سان مارزانو وموزاريلا دي بوفالا الطازجة."
+
+msgid "Our Specialties"
+msgstr "تخصصاتنا"
+
+msgid "Discover our authentic Neapolitan pizzas"
+msgstr "اكتشف البيتزا النابولية الأصيلة لدينا"
+
+msgid "View Details"
+msgstr "عرض التفاصيل"
+
+msgid "Find Us"
+msgstr "موقعنا"
+
+msgid "Visit us at one of our locations"
+msgstr "زورونا في أحد فروعنا"
+
+msgid "What Our Customers Say"
+msgstr "ماذا يقول عملاؤنا"
+
+msgid "Discover why our guests love us"
+msgstr "اكتشف لماذا يحبنا ضيوفنا"
+
+msgid "5 stars"
+msgstr "5 نجوم"
+
+msgid "4 stars"
+msgstr "4 نجوم"
+
+msgid "3 stars"
+msgstr "3 نجوم"
+
+msgid "2 stars"
+msgstr "نجمتان"
+
+msgid "1 star"
+msgstr "نجمة واحدة"

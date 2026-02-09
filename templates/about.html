@@ -1,0 +1,241 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}?v=2">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="container">
+        <h1>Our Story</h1>
+        <p class="lead">Discover the passion behind our authentic Neapolitan pizzas</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-img">
+                    <img src="{% static 'images/restaurant-interior.jpg' %}" alt="Restaurant Interior" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title">Welcome to 60 Seconds to Napoli</h2>
+                <p>60 Seconds to Napoli brings the authentic taste of Naples to Germany and Switzerland. With over 30 locations, we've become the destination for award-winning Neapolitan pizza made with premium ingredients and traditional methods.</p>
+                <p>Our name comes from the exact 60 seconds it takes to cook a perfect Neapolitan pizza in our 485°C wood-fired oven. This high temperature creates a light, airy crust with just the right amount of char, while keeping the toppings fresh and flavorful.</p>
+                <p>Our dough rests for up to 72 hours, developing exceptional flavor and the perfect texture. We use only premium ingredients including San Marzano tomatoes DOP, Fior di Latte, and Parmigiano Reggiano 24 months aged.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">What Makes Us Special</h2>
+            <p class="lead">We take pride in every detail of our pizza-making process</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-wheat-awn"></i>
+                    </div>
+                    <h4>72-Hour Dough</h4>
+                    <p>Our dough is made with Italian "00" flour and left to rise for 72 hours, developing exceptional flavor and texture.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4>Wood-Fired Oven</h4>
+                    <p>Our hand-built oven reaches 485°C, cooking each pizza in just 60 seconds for the perfect Neapolitan crust.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Premium Ingredients</h4>
+                    <p>We source only the finest ingredients, including San Marzano tomatoes and fresh mozzarella di bufala from Italy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="lead">Passionate people behind our delicious pizzas</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="{% static 'images/chef1.jpg' %}" alt="Chef Marco">
+                    </div>
+                    <h4>Our Pizzaiolos</h4>
+                    <p>Master Pizza Makers</p>
+                    <p class="small">Trained in traditional Neapolitan pizza making with passion for authentic Italian cuisine.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="{% static 'images/chef2.jpg' %}" alt="Chef Sofia">
+                    </div>
+                    <h4>Our Kitchen Team</h4>
+                    <p>Quality Experts</p>
+                    <p class="small">Dedicated to perfecting every dish with premium ingredients from Italy.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="{% static 'images/manager.jpg' %}" alt="Manager">
+                    </div>
+                    <h4>Susanne Voigt</h4>
+                    <p>Managing Director</p>
+                    <p class="small">Leading 60 Seconds to Napoli Holding GmbH with a vision for exceptional dining experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="lead">Don't just take our word for it</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">The best Neapolitan pizza I've had outside of Italy! The crust is perfect - soft and chewy with just the right amount of char. The ingredients taste incredibly fresh and authentic.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-img">
+                            <img src="{% static 'images/testimonial1.jpg' %}" alt="Sarah M.">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Sarah M.</h5>
+                            <p>Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">As someone from Naples, I'm very particular about my pizza. 60 Seconds to Napoli is the real deal! The Margherita takes me right back to the piazzas of my hometown.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-img">
+                            <img src="{% static 'images/testimonial2.jpg' %}" alt="Giovanni R.">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Giovanni R.</h5>
+                            <p>Naples, Italy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">We come here every Friday night with the family. The kids love watching the pizzaiolos work their magic in the open kitchen. The service is always friendly and the food is consistently excellent.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-img">
+                            <img src="{% static 'images/testimonial3.jpg' %}" alt="The Johnson Family">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>The Johnson Family</h5>
+                            <p>Regular Customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visit Us -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title">Visit Us</h2>
+                <p>With over 30 locations across Germany and Switzerland, there's always a 60 Seconds to Napoli near you. From Zürich to Berlin, München to Hamburg - enjoy authentic Neapolitan pizza wherever you are.</p>
+                
+                <div class="mb-4">
+                    <h5>Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Monday - Thursday:</strong> 11:30 AM - 10:00 PM</li>
+                        <li class="mb-2"><strong>Friday - Saturday:</strong> 11:30 AM - 11:00 PM</li>
+                        <li class="mb-2"><strong>Sunday:</strong> 12:00 PM - 9:00 PM</li>
+                    </ul>
+                </div>
+                
+                <a href="{% url 'contact' %}" class="btn btn-primary">Get Directions</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-img">
+                    <img src="{% static 'images/restaurant-front.jpg' %}" alt="Restaurant Front" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}

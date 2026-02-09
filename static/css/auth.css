@@ -1,0 +1,177 @@
+/* ===================================================
+   60 SECONDS TO NAPOLI - AUTHENTICATION STYLES
+   =================================================== */
+
+.auth-container {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    padding: var(--space-12) 0;
+    background: #000;
+}
+
+.auth-card {
+    background: #0a0a0a;
+    border-radius: 0;
+    border: 1px solid #222;
+    overflow: hidden;
+}
+
+.auth-header {
+    text-align: center;
+    padding: var(--space-8) var(--space-8) var(--space-6);
+    background: #000;
+    color: #fff;
+    border-bottom: 1px solid #222;
+}
+
+.auth-logo {
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-3xl);
+    color: #fff;
+}
+
+.auth-header h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--color-white);
+    margin-bottom: var(--space-2);
+}
+
+.auth-header p {
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.auth-card form {
+    padding: var(--space-8);
+}
+
+.auth-card .form-floating {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-gray-500);
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #fff;
+}
+
+.password-strength {
+    padding: var(--space-2) 0;
+}
+
+.strength-bar {
+    height: 4px;
+    background: var(--color-gray-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+    position: relative;
+}
+
+.strength-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: var(--color-success);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-normal), background var(--transition-normal);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: var(--space-6) 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-gray-300);
+}
+
+.divider span {
+    padding: 0 var(--space-4);
+    color: var(--color-gray-500);
+    font-size: var(--text-sm);
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+.social-login .btn {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+}
+
+.social-login .btn:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+.auth-footer {
+    text-align: center;
+    padding: var(--space-6);
+    background: #111;
+    border-top: 1px solid #222;
+    color: #888;
+}
+
+.auth-footer a {
+    font-weight: var(--font-semibold);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .auth-container {
+        padding: var(--space-4) 0;
+    }
+    
+    .auth-header {
+        padding: var(--space-6);
+    }
+    
+    .auth-card form {
+        padding: var(--space-6);
+    }
+    
+    .auth-logo {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-2xl);
+    }
+}

@@ -1,0 +1,358 @@
+/* Hero Section with Video Background */
+.hero-section {
+    color: white;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 180px 0;
+}
+
+/* Video Showcase Section */
+.video-showcase {
+    background: #000;
+    padding: 6rem 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.video-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.showcase-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.video-wrapper:hover .video-play-btn {
+    opacity: 1;
+}
+
+.video-play-btn i {
+    font-size: 1.5rem;
+    color: #000;
+    margin-left: 5px;
+}
+
+.video-content {
+    padding: 2rem;
+}
+
+.video-content h2 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.video-content p {
+    color: #aaa;
+}
+
+.video-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.video-features li {
+    color: #fff;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #222;
+}
+
+.video-features li:last-child {
+    border-bottom: none;
+}
+
+.video-features i {
+    color: #4CAF50;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.hero-title span {
+    color: #fff;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Features Section - Pure Black Theme */
+.feature-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 0;
+    transition: all 0.4s ease;
+    margin-bottom: 2rem;
+    background: #000;
+    border: 1px solid #222;
+}
+
+.feature-card:hover {
+    border-color: #fff;
+}
+
+.feature-card h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.feature-card p {
+    color: #888;
+    font-weight: 300;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+/* Menu Preview - With Photo Background */
+.menu-preview {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.92)),
+                url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1920&q=80') no-repeat center center/cover;
+    padding: 6rem 0;
+    background-attachment: fixed;
+}
+
+.menu-preview h2 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.menu-preview .lead {
+    color: #888;
+}
+
+.menu-item-card {
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    margin-bottom: 2rem;
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+}
+
+.menu-item-card:hover {
+    border-color: #fff;
+}
+
+.menu-item-card .card-body {
+    background: #0a0a0a;
+    padding: 1.5rem;
+}
+
+.menu-item-card .card-title {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-item-card .card-text {
+    color: #777;
+    font-weight: 300;
+}
+
+.menu-item-card .h5 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.menu-item-img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.btn-outline-dark,
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+    border-width: 2px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 12px 30px;
+}
+
+.btn-outline-dark:hover,
+.btn-outline-light:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+/* Locations - With Photo Background */
+.locations {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+.locations h2 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.locations .lead {
+    color: #888;
+}
+
+.location-card {
+    border: 1px solid #222;
+    border-radius: 0;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+    background: #0a0a0a;
+}
+
+.location-card:hover {
+    border-color: #fff;
+}
+
+.location-card h4 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.location-card p {
+    color: #777;
+}
+
+.location-card i {
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 120px 0;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .video-showcase {
+        padding: 3rem 0;
+    }
+    
+    .video-content {
+        padding: 2rem 0;
+        text-align: center;
+    }
+    
+    .video-features li {
+        text-align: left;
+    }
+}
+
+/* Photo Backgrounds */
+.hero-video-container {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1920&q=80') no-repeat center center/cover;
+}
+
+.video-wrapper {
+    background: url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80') no-repeat center center/cover;
+    min-height: 400px;
+}
+
+/* Features Section Background */
+.features-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)),
+                url('https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=1920&q=80') no-repeat center center/cover;
+}

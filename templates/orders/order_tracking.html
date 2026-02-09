@@ -1,0 +1,231 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Order Tracking - 60 Seconds to Napoli{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/order-tracking.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Order Tracking Main -->
+        <div class="col-lg-8">
+            <div class="tracking-container">
+                <!-- Order Header -->
+                <div class="order-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="mb-1">Order Tracking</h2>
+                            <p class="text-muted mb-0">Order Number: <strong>{{ order_number }}</strong></p>
+                        </div>
+                        <div class="text-end">
+                            <div class="status-badge status-{{ status }}">
+                                <i class="fas fa-circle me-2"></i>
+                                {{ status|title }}
+                            </div>
+                            <div class="estimated-time mt-2">
+                                <i class="fas fa-clock me-2"></i>
+                                {{ estimated_time }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracker -->
+                <div class="progress-tracker">
+                    <div class="tracker-line">
+                        <div class="tracker-progress" style="width: {{ current_step|add:25 }}%"></div>
+                    </div>
+                    <div class="tracker-steps">
+                        {% for step in steps %}
+                        <div class="tracker-step {% if step.completed %}completed{% elif forloop.counter == current_step %}active{% endif %}">
+                            <div class="step-icon">
+                                {% if step.completed %}
+                                    <i class="fas fa-check"></i>
+                                {% else %}
+                                    <i class="fas fa-{{ 'utensils' if forloop.counter == 1 else 'fire' if forloop.counter == 2 else 'truck' if forloop.counter == 3 else 'check-circle' }}"></i>
+                                {% endif %}
+                            </div>
+                            <div class="step-details">
+                                <div class="step-name">{{ step.name }}</div>
+                                <div class="step-time">{{ step.time }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <h4 class="mb-3">
+                        <i class="fas fa-map-marked-alt me-2"></i>
+                        Live Tracking
+                    </h4>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">Live map tracking will be available here</p>
+                            <p class="small text-muted">In production, this would show real-time delivery tracking</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="order-details">
+                    <h4 class="mb-3">
+                        <i class="fas fa-receipt me-2"></i>
+                        Order Details
+                    </h4>
+                    <div class="order-items">
+                        <!-- Items would be populated from actual order data -->
+                        <div class="order-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-medium">Margherita Pizza</div>
+                                    <small class="text-muted">Quantity: 1</small>
+                                </div>
+                                <span>12.50 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary mt-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal:</span>
+                            <span>12.50 €</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tax:</span>
+                            <span>1.25 €</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Delivery:</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="d-flex justify-content-between fw-bold">
+                            <span>Total:</span>
+                            <span>13.75 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Support -->
+                <div class="contact-support">
+                    <h4 class="mb-3">
+                        <i class="fas fa-headset me-2"></i>
+                        Need Help?
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="support-option">
+                                <i class="fas fa-phone me-3"></i>
+                                <div>
+                                    <div class="fw-medium">Call Us</div>
+                                    <small class="text-muted">+49 123 456 789</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="support-option">
+                                <i class="fas fa-envelope me-3"></i>
+                                <div>
+                                    <div class="fw-medium">Email Support</div>
+                                    <small class="text-muted">support@napoli.com</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="tracking-sidebar">
+                <!-- Delivery Info -->
+                <div class="sidebar-section">
+                    <h5 class="mb-3">
+                        <i class="fas fa-truck me-2"></i>
+                        Delivery Information
+                    </h5>
+                    <div class="delivery-info">
+                        <div class="info-item">
+                            <small class="text-muted">Delivery Address</small>
+                            <div class="fw-medium">123 Main Street</div>
+                            <div class="text-muted">Berlin, 10115</div>
+                        </div>
+                        <div class="info-item">
+                            <small class="text-muted">Delivery Partner</small>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user-circle me-2"></i>
+                                <span class="fw-medium">Marco P.</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <small class="text-muted">Vehicle</small>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-motorcycle me-2"></i>
+                                <span>Scooter - Blue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="sidebar-section">
+                    <h5 class="mb-3">
+                        <i class="fas fa-tools me-2"></i>
+                        Quick Actions
+                    </h5>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-phone me-2"></i>
+                            Call Delivery Partner
+                        </button>
+                        <button class="btn btn-outline-secondary">
+                            <i class="fas fa-comment me-2"></i>
+                            Send Message
+                        </button>
+                        <button class="btn btn-outline-info">
+                            <i class="fas fa-redo me-2"></i>
+                            Reorder
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estimated Timeline -->
+                <div class="sidebar-section">
+                    <h5 class="mb-3">
+                        <i class="fas fa-clock me-2"></i>
+                        Estimated Timeline
+                    </h5>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:30 PM</div>
+                            <div class="timeline-event">Order Placed</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:32 PM</div>
+                            <div class="timeline-event">Preparing Food</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:45 PM</div>
+                            <div class="timeline-event">Out for Delivery</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:50 PM</div>
+                            <div class="timeline-event">Estimated Arrival</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/order-tracking.js' %}"></script>
+{% endblock %}
